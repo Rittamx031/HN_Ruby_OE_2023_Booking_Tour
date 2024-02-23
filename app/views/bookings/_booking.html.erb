@@ -2,23 +2,15 @@
   <section class="booking-details bg-light p-4 rounded">
     <p class="mb-2">
       <strong><%= t("bookings.show.tour_detail_name") %></strong>
-      <%= booking&.tour_detail&.tour_detail_name %>
+      <%= link_to booking.tour_detail.tour_detail_name, tour_path(booking.tour_detail.tour), class: "text-primary" %>
     </p>
     <p class="mb-2">
       <strong><%= t("bookings.show.detail_description") %></strong>
-      <%= booking&.tour_detail.detail_description %>
+      <%= booking.tour_detail.detail_description %>
     </p>
     <p class="mb-2">
       <strong><%= t("bookings.show.booking_date") %></strong>
       <%= l(booking.created_at, format: :long) %>
-    </p>
-    <p class="mb-2">
-      <strong><%= t("bookings.show.start_date") %></strong>
-      <%= l(booking.date_start, format: :long) if booking&.date_start %>
-    </p>
-    <p class="mb-2">
-      <strong><%= t("bookings.show.end_date") %></strong>
-      <%= l(booking.end_date, format: :long) if booking&.end_date %>
     </p>
     <p class="mb-2">
       <strong><%= t("bookings.show.phone") %></strong>
