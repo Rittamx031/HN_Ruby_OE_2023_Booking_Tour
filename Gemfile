@@ -17,6 +17,7 @@ gem "pagy"
 gem "phonelib"
 gem "sassc-rails"
 gem "sprockets-rails"
+gem 'sassc-rails'
 # Use mysql as the database for Active Record
 gem "font-awesome-sass", "~> 5.10.2"
 gem "jquery-rails"
