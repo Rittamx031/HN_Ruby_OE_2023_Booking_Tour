@@ -77,6 +77,7 @@ vi:
     unfollow_unsuccess: "Bỏ theo dõi không tour thành công"
     follow_not_exit: "Bạn chưa theo dõi tour này"
     follow_exit: "Bạn đã theo dõi tour này"
+    unfollow_unsuccess: "Bỏ theo dõi tour không thành công"
     tour_name: "Tên Tour"
     time_duration: "Thời Lượng"
     hashtag: "Hashtag"
@@ -243,3 +244,9 @@ vi:
     reviews:
       update: "Cập nhật review"
       new: "thêm review"
+  cancel_modal:
+    title: "Hủy đặt tour"
+    reason_label: "Lý do:"
+    close_button: "Đóng"
+    submit_button: "Hủy đặt"
+    booking_cancelled_notification: "The booking has been canceled. An email notification will be sent to the owner."

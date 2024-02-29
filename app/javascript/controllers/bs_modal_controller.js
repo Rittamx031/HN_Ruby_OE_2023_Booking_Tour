@@ -9,9 +9,5 @@ export default class extends Controller {
     this.modal.show()
   }
   disconnet() {
-    this.modal.hide()
-  }
-  submitEnd(event) {
-    this.modal.hide()
   }
 }
