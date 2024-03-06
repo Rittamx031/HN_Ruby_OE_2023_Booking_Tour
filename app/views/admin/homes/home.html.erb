@@ -1,0 +1,18 @@
+<div class="container-fluid bg-light p-3" data-controller="charts">
+  <div class="container">
+    <%= form_with url: admin_chart_filter_path, class: "row bg-light", method: :post do |form| %>
+      <div class="col-md-3 mb-3">
+        <%= form.label :dateform, t('bookings.show.date_start_to') %>
+        <%= form.date_field :dateform, class: "form-control" %>
+      </div>
+      <div class="col-md-3 mb-3">
+        <%= form.label :dateto, t('bookings.show.date_start_form') %>
+        <%= form.date_field :dateto, class: "form-control" %>
+      </div>
+      <div class="col-md-2 mb-3 d-flex align-items-center justify-content-center">
+        <%= form.submit t('bookings.show.search'), class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+  </div>
+  <%= render '/admin/charts/charts' %>
+</div>

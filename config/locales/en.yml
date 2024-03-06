@@ -240,3 +240,14 @@ en:
     reviews:
       update: "Update Review"
       new: "Add Review"
+  home:
+    new_account: "New Account"
+    new_booking: "New Booking"
+    status_of_booking: "Status of Booking"
+    income: "Income"
+    this_month: 'This Month'
+    last_month: 'Last Month'
+    this_year: 'This Year'
+    filter: "Filter"
+    date_order: "End date must be greater than start date."
+    invalid_format: "Invalid date format. Please provide valid dates."

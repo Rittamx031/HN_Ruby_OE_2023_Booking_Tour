@@ -250,3 +250,15 @@ vi:
     close_button: "Đóng"
     submit_button: "Hủy đặt"
     booking_cancelled_notification: "The booking has been canceled. An email notification will be sent to the owner."
+
+  home:
+    new_account: "Nguời dùng đăng ký mới"
+    new_booking: "Số lượng đặt tour mới"
+    status_of_booking: "Trạng thái Đặt tour"
+    income: "Doanh thu"
+    this_month: 'Tháng này'
+    last_month: 'Tháng trước'
+    this_year: 'Năm nay'
+    filter: "Bộ lọc"
+    date_order: "Ngày kết thúc phải lớn hơn ngày bắt đầu."
+    invalid_format: "Định dạng ngày không hợp lệ. Vui lòng nhập ngày hợp lệ."

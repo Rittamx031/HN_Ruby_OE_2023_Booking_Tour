@@ -32,11 +32,20 @@ Rails.application.routes.draw do
       resources :tours, :tour_details, :homes, :tour_categories
       resources :bills, only: %i(index cancel confirm)
       mount Sidekiq::Web => '/sidekiq'
+      resources :charts do
+        collection do
+          get 'incomes'
+          get 'status_booking'
+          get 'users_signup'
+          get 'new_booking'
+        end
+      end
       get 'dashboard'=> 'homes#home', as: "dashboard"
       get '/tour/:id/tourdetails' => 'tour_details#new', as: 'add_tour_detail'
       get 'cancel_booking/:id' => 'bills#cancel_modal', as: 'cancel_booking'
       put 'confirm_booking/:id' => 'bills#confirm', as: 'confirm_booking'
       post 'submit_cancel/:id' => 'bills#submit_cancel', as: "submit_cancel"
+      post "/charts/filter" => "charts#filter", as: "chart_filter"
     end
   end
 end

@@ -6,3 +6,5 @@ import 'bootstrap'
 import "trix"
 import "@rails/actiontext"
 import "main"
+import "chartkick"
+import "Chart.bundle"

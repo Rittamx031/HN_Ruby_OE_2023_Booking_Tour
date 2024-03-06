@@ -9,6 +9,7 @@ gem "config"
 gem "rails", "~> 7.0.5"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "bcrypt"
+gem "chartkick"
 gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
@@ -17,7 +18,6 @@ gem "pagy"
 gem "phonelib"
 gem "sassc-rails"
 gem "sprockets-rails"
-gem 'sassc-rails'
 # Use mysql as the database for Active Record
 gem "font-awesome-sass", "~> 5.10.2"
 gem "jquery-rails"
@@ -36,7 +36,6 @@ gem "turbo-rails"
 
 # Hotwire"s modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "faker"
 gem "jbuilder"
@@ -90,3 +89,4 @@ gem "sidekiq", "~> 7.2"
 
 gem "redis", "~> 5.1"
 gem "whenever", "~> 1.0", require: false
+gem "groupdate", "~> 6.4"

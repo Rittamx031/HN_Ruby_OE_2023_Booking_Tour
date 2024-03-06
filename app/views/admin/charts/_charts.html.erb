@@ -1,0 +1,44 @@
+<%= turbo_frame_tag :charts do %>
+  <div class="row">
+    <div class="col-md-12 col-xxl-6 mb-4">
+      <div class="card info-card">
+        <div class="card-body mt-5">
+          <%= line_chart users_signup_admin_charts_path(datefrom: @parsed_date_form, dateto: @parsed_date_to) %>
+          <div class="footer-chart d-flex justify-content-center">
+            <h5><%= t("home.new_account")%></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-xxl-6 mb-4">
+      <div class="card info-card">
+        <div class="card-body mt-5">
+          <%= bar_chart new_booking_admin_charts_path(datefrom: @parsed_date_form, dateto: @parsed_date_to) %>
+          <div class="footer-chart d-flex justify-content-center">
+            <h5><%= t("home.new_booking")%></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-xxl-6 mb-4">
+      <div class="card info-card">
+        <div class="card-body mt-5">
+          <%= pie_chart status_booking_admin_charts_path(datefrom: @parsed_date_form, dateto: @parsed_date_to) %>
+          <div class="footer-chart d-flex justify-content-center">
+            <h5><%= t("home.status_of_booking")%></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-12 col-xxl-6 mb-4">
+      <div class="card info-card">
+        <div class="card-body mt-5">
+          <%= column_chart incomes_admin_charts_path(datefrom: @parsed_date_form, dateto: @parsed_date_to) %>
+          <div class="footer-chart d-flex justify-content-center">
+            <h5><%= t("home.income")%></h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
