@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_22_30_709013) do
+ActiveRecord::Schema[7.0].define(version: 2024_22_30_709016) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -66,6 +66,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_22_30_709013) do
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
+  create_table "friendly_id_slugs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "slug", null: false
+    t.integer "sluggable_id", null: false
+    t.string "sluggable_type", limit: 50
+    t.string "scope"
+    t.datetime "created_at"
+    t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, length: { slug: 70, scope: 70 }
+    t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", length: { slug: 140 }
+    t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
   create_table "reviews", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "review_text"
     t.datetime "created_at", null: false
@@ -111,6 +122,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_22_30_709013) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "tour_category_id"
+    t.string "slug"
+    t.index ["slug"], name: "index_tours_on_slug", unique: true
     t.index ["tour_category_id"], name: "index_tours_on_tour_category_id"
   end
 
@@ -130,8 +143,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_22_30_709013) do
     t.string "unconfirmed_email"
     t.string "provider"
     t.string "uid"
+    t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"

@@ -2,6 +2,9 @@ class Tour < ApplicationRecord
   CREATE_PARAMS = [:tour_name, :hagtag,
                    :tour_description, :tour_category_id,
                    :image, :content].freeze
+  extend FriendlyId
+  friendly_id :tour_name, use: :slugged
+
   has_rich_text :content
   belongs_to :tour_category
   has_one_attached :image do |attachable|
