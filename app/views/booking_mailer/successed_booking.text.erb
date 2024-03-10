@@ -1,0 +1,8 @@
+<%= I18n.t("bookings.mail.tour_confirmation") %>
+<%= I18n.t("bookings.mail.dear_customer", customer_name: @user.username) %>,
+<%= I18n.t("bookings.mail.tour_confirmation_message", tour_name: @booking.tour_detail.tour_detail_name, tour_date: @booking.date_start) %>
+<%= I18n.t("bookings.mail.additional_details") %>:
+<%= I18n.t("bookings.mail.tour_name") %>:</strong> <%= @booking.tour_detail.tour_detail_name %>
+<%= I18n.t("bookings.mail.tour_date") %>:</strong> <%= @booking.date_start %>
+<%= I18n.t("bookings.mail.contact_customer_support") %>
+<%= I18n.t("bookings.mail.thank_you") %>

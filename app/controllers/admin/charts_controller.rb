@@ -63,7 +63,7 @@ class Admin::ChartsController < ApplicationController
               Time.zone.now
   end
 
-  def parse_dat date_param
+  def parse_date date_param
     Time.zone.parse(date_param) if date_param.present?
   end
 end

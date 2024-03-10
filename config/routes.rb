@@ -40,6 +40,7 @@ Rails.application.routes.draw do
           get 'new_booking'
         end
       end
+      mount Sidekiq::Web => '/sidekiq'
       get 'dashboard'=> 'homes#home', as: "dashboard"
       get '/tour/:id/tourdetails' => 'tour_details#new', as: 'add_tour_detail'
       get 'cancel_booking/:id' => 'bills#cancel_modal', as: 'cancel_booking'

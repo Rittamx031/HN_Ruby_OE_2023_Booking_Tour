@@ -92,6 +92,7 @@ GEM
       xpath (~> 3.2)
     chronic (0.10.2)
     chartkick (5.0.6)
+    chronic (0.10.2)
     concurrent-ruby (1.2.2)
     config (5.1.0)
       deep_merge (~> 1.2, >= 1.2.1)

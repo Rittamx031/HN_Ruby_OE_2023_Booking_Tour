@@ -16,7 +16,8 @@ class Booking < ApplicationRecord
   validate :booking_date_in_future, on: :create
   validate :out_of_peoples, if: ->{numbers_people.present?}
   scope :new_bills, ->{order(created_at: :desc)}
-
+  scope :overtimebooking, -> { where(status: 0).where("date_start >= ?", Time.zone.now) }
+  scope :successbooking, -> { where(status: 1).where("end_date <= ?", Settings.success_3_days.days.ago) }
   before_create :update_prices, :status_booking
   before_save :caculate_end_date
   enum status: {
@@ -46,6 +47,13 @@ class Booking < ApplicationRecord
     ConfirmBookingMailJob.perform_async(id)
   end
 
+  def successed_booking
+    reload
+    return I18n.t("bookings.errors.update_status_fail") unless confirmed?
+
+    update_column(:status, 3)
+    BookingMailer.with(user: user, booking: self).successed_booking.deliver_later if user.present?
+  end
   private
 
   def booking_date_in_future

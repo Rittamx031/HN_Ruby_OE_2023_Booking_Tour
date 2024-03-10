@@ -1,0 +1,11 @@
+<div class="container">
+  <h1><%= t("bookings.mail.tour_confirmation") %></h1>
+  <p><%= t("bookings.mail.dear_customer", customer_name: @user.username) %>,</p>
+  <p><%= t("bookings.mail.tour_confirmation_message", tour_name: @booking.tour_detail.tour_detail_name, tour_date: @booking.date_start) %></p>
+  <p><%= t("bookings.mail.additional_details") %>:</p>
+  <ul>
+    <li><strong><%= t("bookings.mail.tour_name") %>:</strong> <%= @booking.tour_detail.tour_detail_name %></li>
+    <li><strong><%= t("bookings.mail.tour_date") %>:</strong> <%= @booking.date_start %></li>
+  </ul>
+  <p><%= t("bookings.mail.contact_customer_support") %></p>
+</div>
