@@ -40,8 +40,6 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "faker"
 gem "jbuilder"
-# Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -84,14 +82,23 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "rspec-rails", "~> 6.1"
+  gem "simplecov", require: false
+  gem "simplecov-rcov", require: false
 end
 
-gem "sidekiq", "~> 7.2"
 
 gem "redis", "~> 5.1"
-gem "whenever", "~> 1.0", require: false
 gem "groupdate", "~> 6.4"
 
 gem "sidekiq", "~> 7.2"
 
 gem "whenever", "~> 1.0" , require: false
+
+gem 'rails-controller-testing'
+
+gem "factory_bot_rails"
+
+gem "resque", "~> 2.6"
+
+gem "open-uri", "~> 0.4.1"

@@ -20,7 +20,7 @@ class BookingsController < ApplicationController
 
   def cancel
     begin
-      @booking.cancel_booking
+      @booking.cancel_booking({"reason" => "feafeaef"})
       flash[:success] = t("bookings.cancel_success")
     rescue RuntimeError => e
       flash[:danger] = e
@@ -32,10 +32,6 @@ class BookingsController < ApplicationController
 
   def booking_history
     render_index_page(current_user.bookings)
-  end
-
-  def booking_following
-    render_index_page(current_user.followed_tours)
   end
 
   private

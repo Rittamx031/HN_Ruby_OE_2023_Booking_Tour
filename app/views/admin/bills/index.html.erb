@@ -27,7 +27,7 @@
   <thead class="thead-dark">
     <tr>
       <th><%= t("bookings.show.tour_detail_name") %></th>
-      <th><%= sort_link(@filter, :booking_date, t("bookings.show.booking_date")) %></th>
+      <th><%= sort_link(@filter, :created_at, t("bookings.show.booking_date")) %></th>
       <th><%= sort_link(@filter, :date_start, t("bookings.show.date_start")) %></th>
       <th><%= sort_link(@filter, :end_date, t("bookings.show.end_date")) %></th>
       <th><%= t("bookings.show.phone") %></th>

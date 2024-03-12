@@ -16,6 +16,19 @@ module RailsTutorial
     config.active_job.queue_adapter = :sidekiq
     config.time_zone = 'UTC'
     config.active_job.queue_adapter = :sidekiq
+    config.generators do |g|
+      g.test_framework = :rspec
+    end
+      config.generators do |g|
+      g.test_framework(
+        :rspec,
+        fixtures: false,
+        view_specs: false,
+        helper_specs: false,
+        route_specs: false,
+      )
+    end
+    config.active_storage.silence_invalid_content_types_warning = true
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

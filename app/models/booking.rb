@@ -41,7 +41,7 @@ class Booking < ApplicationRecord
 
   def confirm_booking
     reload
-    return I18n.t("bookings.errors.update_status_fail") unless pending?
+    raise I18n.t("bookings.errors.update_status_fail") unless pending?
 
     confirmed!
     ConfirmBookingMailJob.perform_async(id)
@@ -49,9 +49,9 @@ class Booking < ApplicationRecord
 
   def successed_booking
     reload
-    return I18n.t("bookings.errors.update_status_fail") unless confirmed?
+    raise I18n.t("bookings.errors.update_status_fail") unless confirmed?
 
-    update_column(:status, 3)
+    successed!
     BookingMailer.with(user: user, booking: self).successed_booking.deliver_later if user.present?
   end
   private
@@ -76,6 +76,7 @@ class Booking < ApplicationRecord
 
   def status_booking
     self.status = :pending
+    self.booking_date = Time.zone.now
   end
 
   def caculate_end_date

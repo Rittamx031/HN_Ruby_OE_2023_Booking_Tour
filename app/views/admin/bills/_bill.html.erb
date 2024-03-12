@@ -7,8 +7,8 @@
     <% end %>
   </td>
   <td><%= l(bill.created_at, format: :long) %></td>
-  <td><%= l(bill.created_at, format: :long) %></td>
   <td><%= l(bill.date_start, format: :long) %></td>
+  <td><%= l(bill.end_date, format: :long) %></td>
   <td><%= bill.phone %></td>
   <td><%= bill.numbers_people %></td>
   <td><%= number_to_currency(bill.total_amount, unit: "₫", format: "%n %u", precision: 0) %></td>
