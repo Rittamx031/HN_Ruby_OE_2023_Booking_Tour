@@ -1,0 +1,6 @@
+<%= turbo_stream.append :flash do%>
+  <%= render "shared/flash_messages"%>
+<%end%>
+<%= turbo_stream.replace dom_id(@bill) do %>
+  <%= render "admin/bills/status", bill: @bill %>
+<%end%>

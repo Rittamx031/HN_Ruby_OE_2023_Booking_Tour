@@ -12,7 +12,7 @@ class Admin::BillsController < Admin::BaseController
     @bill.cancel_booking(cancel_params)
     flash.now[:success] = t("bookings.cancel_success")
     render :success_cancel
-  rescue RuntimeError => e
+  rescue RuntimeError, ActiveRecord::RecordInvalid => e
     flash.now[:danger] = e
     render :cancel_valid, status: :unprocessable_entity
   end
@@ -23,9 +23,10 @@ class Admin::BillsController < Admin::BaseController
     else
       flash.now[:error] = t("bookings.confirm_error")
     end
-    redirect_to admin_bills_path
   end
+
   private
+
   def ransack_params
     Booking.ransack(params[:query])
   end

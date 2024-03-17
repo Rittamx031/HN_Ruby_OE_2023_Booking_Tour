@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Admin::Tours", type: :request do
+RSpec.describe "Admin::Tours", :admin, type: :request do
   before do
     sign_in  FactoryBot.create(:user, admin: true)
   end
