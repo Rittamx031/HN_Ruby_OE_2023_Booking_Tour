@@ -36,7 +36,7 @@ RSpec.describe Booking, type: :model do
       before { booking.confirmed! }
 
       it "raises an error and does not cancel the booking" do
-        expect { booking.cancel_booking }.to raise_error
+        expect { booking.cancel_booking booking_reason }.to raise_error(RuntimeError)
         expect(booking.reload.status.to_sym).not_to eq(:canceled)
       end
     end
@@ -58,7 +58,7 @@ RSpec.describe Booking, type: :model do
       }
 
       it "does not confirm the booking" do
-        expect { booking.confirm_booking }.to raise_error
+        expect { booking.confirm_booking }.to raise_error(RuntimeError)
         expect(booking.status.to_sym).not_to eq(:confirmed)
       end
     end

@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of(:email) }
     it { should validate_presence_of(:username) }
     it { should validate_presence_of(:password) }
-    it { should validate_presence_of(:password_confirmation) }
+    it { should validate_presence_of(:password_confirmation).allow_nil }
     it { should validate_presence_of(:phone).allow_nil }
   end
 

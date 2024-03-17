@@ -85,6 +85,7 @@ group :test do
   gem "rspec-rails", "~> 6.1"
   gem "simplecov", require: false
   gem "simplecov-rcov", require: false
+  gem "shoulda-matchers", "~> 6.0"
 end
 
 
