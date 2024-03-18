@@ -82,10 +82,20 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html]
   gem "capybara"
+  gem "rspec-rails", "~> 6.1.0"
   gem "selenium-webdriver"
+  gem "shoulda-matchers", "~> 6.0"
+  gem "simplecov", require: false
+  gem "simplecov-rcov", require: false
   gem "webdrivers"
 end
 gem "groupdate", "~> 6.4"
 gem "redis", "~> 5.1"
 gem "sidekiq", "~> 7.2"
 gem "whenever", "~> 1.0", require: false
+
+gem "factory_bot_rails"
+
+gem "resque", "~> 2.6"
+
+gem "open-uri", "~> 0.4.1"
