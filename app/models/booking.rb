@@ -103,8 +103,8 @@ class Booking < ApplicationRecord
                       max_people: tour_detail.max_people))
   end
 
-  def cccd_valid?
-    return if cccd =~ /\A\d{9,12}\z/
+  def cccd_valid
+    return if cccd =~ Settings.valid_cccd_regexs
 
     errors.add(:cccd, I18n.t("bookings.errors.cccd_invalid"))
   end

@@ -12,3 +12,4 @@ host: "localhost:3000"
 dd_mm_yyyy_fm: "%d-%m-%Y"
 user_reason_cancel: "User cancel"
 default_image_tour: "tourtravel.png"
+valid_cccd_regex: /\A\d{9,12}\z/
