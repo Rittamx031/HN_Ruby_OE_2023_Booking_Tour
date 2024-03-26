@@ -8,15 +8,6 @@
               <%= f.label :tour_name_or_hagtag_cont, t("activerecord.attributes.tour.tour_name"), class: "sr-only" %>
               <%= f.search_field :tour_name_or_hagtag_cont, class: "form-control", placeholder: t("search.placeholder.tour_name") %>
             </div>
-            <div class="col-4 form-group mb-2">
-              <%= f.collection_select :tour_category_id_eq, categories, :id, :category_name, { prompt: t("tourform.select_category")}, class: "form-control" , required: true %>
-            </div>
-            <div class = "col-2" >
-              <%= f.submit t("buttons.submit"), class: "btn btn-primary" %>
-            </div>
-            <div class = "col-2" >
-              <%= link_to t("buttons.clear"), tours_path, class: "btn btn-warning" %>
-            </div>
           <% end %>
         </div>
       </div>

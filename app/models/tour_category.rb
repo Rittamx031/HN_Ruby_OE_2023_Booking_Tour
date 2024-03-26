@@ -4,4 +4,5 @@ class TourCategory < ApplicationRecord
 
   validates :category_name, presence: true
   scope :new_category, ->{order(created_at: :desc)}
+  scope :has_tour, -> {joins(:tours).distinct }
 end

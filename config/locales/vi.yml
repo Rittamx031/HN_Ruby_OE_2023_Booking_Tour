@@ -85,6 +85,7 @@ vi:
     tour_category: "Danh Mục Tour"
     tour_image: "Hình Nền Tour"
     category: "Danh Mục"
+    number_book: "%{number} đã đặt tour"
     navbar:
       edit: "Chỉnh sửa"
       tour_details: "Chi Tiết Tour"
@@ -188,7 +189,8 @@ vi:
       tour_detail_not_found: "Chi tiết tour không tồn tại"
       only_admin_role: "Chức năng này chỉ dành cho quản trị viên"
   tour_categories:
-    number_of_tours: "Số  lượng tour"
+    title: "Danh mục"
+    number_of_tours: "Số lượng tour"
     form:
       category_name: "Tên danh mục :"
     flash_messages:

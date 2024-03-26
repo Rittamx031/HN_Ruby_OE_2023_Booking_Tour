@@ -22,4 +22,14 @@ class Tour < ApplicationRecord
   validates :tour_name, presence: true
   validates :image, presence: true, allow_nil: true
   scope :new_tour, ->{order(created_at: :desc)}
+  scope :tour_in_category, lambda {|_tour_category_id|
+       where("tour_category_id = ? ", _tour_category_id )
+      }
+  scope :search_by_keyword, lambda {|_keyword|
+      where("tour_name LIKE %   ")
+  }
+
+  def min_price
+    tour_details.map(&:price).min
+  end
 end

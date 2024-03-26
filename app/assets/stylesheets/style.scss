@@ -753,3 +753,8 @@ h6,
 .alert-link {
   color: #fff !important;
 }
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

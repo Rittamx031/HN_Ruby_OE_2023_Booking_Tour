@@ -5,7 +5,7 @@ Rails.application.routes.draw do
                                     confirmations: "devise/confirmations",
                                     omniauth_callbacks: "users/omniauth_callbacks"}
   scope "(:locale)", locale: /en|vi/ do
-    resources :tours, only: %i(home index show)
+    resources :tours, only: %i(index show)
     resources :users, only: %i(index show)
     resources :bookings, only: %i(create cancel show booking_following) do
       resources :reviews, only: %i(new create)
@@ -18,16 +18,16 @@ Rails.application.routes.draw do
       get "signup" => "devise/registrations#new"
     end
     resources :reviews , only: %i(destroy edit update)
-    root "tours#home"
+    root "tours#index"
     get "home" => "tours#home"
     get "cancel_booking/:id" => "bookings#cancel", as: "cancel_booking"
     get "book/:id" => "bookings#new", as: "book"
     get "booking_history" => "bookings#booking_history", as:"history"
-    get "tour_following" => "users#following_tour", as: "tour_following"
+    get "tour_following" => "tours#following_tour", as: "tour_following"
     get "follow/:id" => "relationships#create", as: "follow_tour"
     get "review/:id" => "reviews#new", as: "review_tour"
     delete "unfollow/:id" => "relationships#destroy", as: "unfollow_tour"
-
+    get "tour_category/:tour_category_id" => "tours#tour_category", as: "tour_by_tour_category"
     namespace :admin do
       resources :tours, :tour_details, :homes, :tour_categories
       resources :bills, only: %i(index cancel confirm)

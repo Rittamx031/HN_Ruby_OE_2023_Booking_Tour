@@ -1,36 +1,4 @@
-<div class="container-fluid bg-light pt-3 d-none d-lg-block">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-6 text-center text-lg-start mb-2 mb-lg-0">
-        <div class="d-inline-flex align-items-center">
-          <p><i class="fa fa-envelope me-2"></i>info@example.com</p>
-          <p class="text-body px-3">|</p>
-          <p><i class="fa fa-phone-alt me-2"></i>+012 345 6789</p>
-        </div>
-      </div>
-      <div class="col-lg-6 text-center text-lg-end">
-        <div class="d-inline-flex align-items-center">
-          <a class="text-primary px-3" href="#">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a class="text-primary px-3" href="#">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a class="text-primary px-3" href="#">
-            <i class="fab fa-linkedin-in"></i>
-          </a>
-          <a class="text-primary px-3" href="#">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a class="text-primary px-3" href="#">
-            <i class="fab fa-youtube"></i>
-          </a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="container-fluid position-relative nav-bar ">
+<div class="container-fluid position-relative nav-bar">
   <div class="container-lg position-relative p-0 px-lg-3" style="z-index: 9;">
     <nav class="navbar navbar-expand-lg bg-light navbar-light shadow-lg py-3 py-lg-0 pl-3 pl-lg-5">
       <a href="#" class="navbar-brand">
@@ -39,9 +7,23 @@
       <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span class="navbar-toggler-icon"></span>
       </button>
+        <div class="dropdown">
+          <a class="nav-link  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= t('tour_categories.title') %>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <% categories_has_tour.each do |category| %>
+                <li class="dropdown-item">
+                  <%= link_to tour_by_tour_category_path(category), class: "nav-link text-dark" do %>
+                    <span class="category-name"><%= category.category_name %></span>
+                    <span class="tour-count">(<%= category.tours.count %>)</span>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+        </div>
       <div class="collapse navbar-collapse justify-content-between px-3" id="navbarCollapse">
         <div class="navbar-nav ms-auto py-0">
-          <%= link_to t("user.headers.link.home" ), home_path, class: "nav-item nav-link active" %>
           <%= link_to t("dashboard.link.tour" ), tours_path, class: "nav-item nav-link" %>
           <div class="nav-item dropdown">
             <% if user_signed_in? %>

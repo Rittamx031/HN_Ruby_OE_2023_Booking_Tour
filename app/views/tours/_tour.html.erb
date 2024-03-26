@@ -1,4 +1,4 @@
-<div class="col-md-4 mb-3 pb-2 tourdetail">
+<div class="col-md-4 mb-3 pb-2 tourdetail border-0">
   <div class="blog-item">
     <div class="position-relative">
       <%= image_tag default_image(tour), class: "img-fluid w-100", alt: t("tours.tour_image") %>
@@ -9,18 +9,11 @@
       </div>
       <div class="row">
         <div class="col-md-4">
-          <span class="font-weight-bold"><%= t("tours.category") %></span>
-        </div>
-        <div class="col-md-8">
-          <a class="h5 m-0 text-decoration-none" href="#"><%= tour.tour_category.category_name %></a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4">
           <span class="font-weight-bold"><%= t("tours.tour_description") %></span>
         </div>
         <div class="col-md-8">
-          <a class="h5 m-0 text-decoration-none" href="#"><%= tour.tour_description %></a>
+          <p class="h5 m-0 text-decoration-none truncate" id="tourDescription"><%= tour.tour_description %></p>
+          <a href="#" class="d-none" id="readMoreLink">Xem thêm</a>
         </div>
       </div>
       <%=render "tours/information", tour: tour %>

@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-md-4">
+  <div class="col-md-3">
     <% if !tour.followed_users.include?(current_user) %>
       <%= link_to follow_tour_path(tour), class: "h5 m-0 text-decoration-none" do %>
         <%= tour.tour_followings.count %>
@@ -12,10 +12,10 @@
       <% end %>
     <% end %>
   </div>
-  <div class="col-md-4">
+  <div class="col-md-3">
     <a class="h5 m-0 text-decoration-none" href="#"><%= tour.reviews.count %><i class="fas fa-comment"></i></a>
   </div>
-  <div class="col-md-4">
-    <a class="h5 m-0 text-decoration-none" href="#"><%= tour.bookings.count %><i class="fas fa-user-friends"></i></a>
+  <div class="col-md-6">
+    <a class="h5 m-0 text-decoration-none" href="#"><%= t("tours.number_book", number: tour.bookings.count)  %></a>
   </div>
 </div>
