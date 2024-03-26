@@ -1,30 +1,56 @@
 <%= form_for(@booking) do |form| %>
-  <div class="form-group">
-    <%= @booking.tour_detail.tour_detail_name %>
+  <div class="form-group row mt-3">
+    <div class="col-sm-3 col-form-label text-end">
+      <%= form.label :date_start, t("bookings.form.date_start")%>
+    </div>
+    <div class="col-sm-9">
+      <%= form.date_field :date_start, min: Time.zone.now, class: "form-control" %>
+      <%= render "shared/error_element_message", errors: @booking.errors[:date_start] %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= t("bookings.form.price") %>
-    <%= number_with_precision(@booking.tour_detail.price, precision: 0, delimiter: ",") %>
+
+  <div class="form-group row mt-3">
+    <div class="col-sm-3 col-form-label text-end">
+      <%= form.label :phone, t("bookings.form.phone") %>
+    </div>
+    <div class="col-sm-9">
+      <%= form.text_field :phone, class: "form-control" %>
+      <%= render "shared/error_element_message", errors: @booking.errors[:phone] %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= form.label :date_start, t("bookings.form.date_start") %>
-    <%= form.date_field :date_start, min: Time.zone.now, class: "form-control" %>
-    <%= render "shared/error_element_message", errors: @booking.errors[:date_start] %>
+
+  <div class="form-group row mt-3">
+    <div class="col-sm-3 col-form-label text-end">
+      <%= form.label :cccd, t("bookings.form.cccd") %>
+    </div>
+    <div class="col-sm-9">
+      <%= form.text_field :cccd, class: "form-control" %>
+      <%= render "shared/error_element_message", errors: @booking.errors[:cccd] %>
+    </div>
   </div>
-  <div class="form-group">
-    <%= form.label :phone, t("bookings.form.phone") %>
-    <%= form.text_field :phone, class: "form-control" %>
-    <%= render "shared/error_element_message", errors: @booking.errors[:phone] %>
-  </div>
-  <div class="form-group">
-    <%= form.label :numbers_people, t("bookings.form.numbers_people") %>
-    <%# , max: @booking.tour_detail.max_people %>
-    <%= form.number_field :numbers_people, class: "form-control", min: 1 %>
-    <%= render "shared/error_element_message", errors: @booking.errors[:numbers_people] %>
+  <div class="form-group row mt-3" data-controller="booking">
+    <div class="col-sm-3 col-form-label text-end">
+      <%= form.label :numbers_people, t("bookings.form.numbers_people") %>
+    </div>
+    <div class="col-sm-9">
+      <%= form.number_field :numbers_people, class: "form-control", min: 1, data: { booking_target: "numberspeople"} %>
+      <%= render "shared/error_element_message", errors: @booking.errors[:numbers_people] %>
+    </div>
+    <div class="col-sm-3 col-form-label text-end mt-3">
+      <input type="hidden" data-booking-target= "price" value=<%= @booking.tour_detail.price %>>
+      <%= form.label :numbers_people, t("bookings.form.total_amount") %>
+    </div>
+    <div class="col-sm-9 mt-3">
+      <input type="text" data-booking-target= "results"  class="form-control font-weight-bold" disabled>
+    </div>
   </div>
   <%= form.hidden_field :tour_detail_id %>
   <%= form.hidden_field :user_id %>
-  <div class="actions">
-    <%= form.submit submit_text, class: "btn btn-primary" %>
+
+  <div class="form-group row mt-3">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-9">
+      <%= form.submit submit_text, class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

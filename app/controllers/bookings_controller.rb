@@ -1,7 +1,7 @@
 class BookingsController < ApplicationController
   before_action :check_user,
-                only: %i(new create booking_history booking_following)
-  before_action :load_tour_detail, only: %i(new)
+                only: %i(new create booking_history)
+  before_action :find_tour_detail, only: %i(new)
   before_action :find_booking, only: %i(show cancel)
   before_action :check_owner, only: %i(cancel)
   def new
@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     if @booking.save
       flash[:success] = t("bookings.create_success")
-      redirect_to root_path
+      redirect_to history_url
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,11 +31,8 @@ class BookingsController < ApplicationController
   def show; end
 
   def booking_history
-    render_index_page(current_user.bookings)
-  end
-
-  def booking_following
-    render_index_page(current_user.followed_tours)
+    @pagy, @bookings = pagy(current_user.bookings)
+    render "bookings/index"
   end
 
   private
@@ -46,12 +43,7 @@ class BookingsController < ApplicationController
     redirect_to root_path
   end
 
-  def render_index_page bookings
-    @pagy, @bookings = pagy(bookings)
-    render "bookings/index"
-  end
-
-  def load_tour_detail
+  def find_tour_detail
     @tour_detail = TourDetail.find_by(id: params[:id])
     return if @tour_detail
 

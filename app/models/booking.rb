@@ -1,11 +1,12 @@
 class Booking < ApplicationRecord
   BOOKING_PARAMS = [:phone, :numbers_people, :tour_detail_id,
-                    :date_start, :user_id].freeze
+                    :date_start, :user_id, :cccd].freeze
   CANCEL_PARAMS = [:reason].freeze
   belongs_to :tour_detail
   belongs_to :user
   has_one :review, dependent: :destroy, class_name: Review.name
   validates :phone, presence: true, phone: true, on: :create
+  validates :cccd, presence: true, allow_nil: true
   validates :date_start, presence: true, allow_nil: true, on: :create
   validates :reason, presence: true, on: :update,
             if: ->{status.to_sym == :canceled}
@@ -15,6 +16,7 @@ class Booking < ApplicationRecord
                            Settings.peoples_booking_min}
   validate :booking_date_in_future, on: :create
   validate :out_of_peoples, if: ->{numbers_people.present?}
+  validate :cccd_valid, if: ->{cccd.present?}
   scope :new_bills, ->{order(created_at: :desc)}
   scope :incomes, lambda {|date_form, date_to|
     where(status: :successed)
@@ -99,6 +101,12 @@ class Booking < ApplicationRecord
     errors.add(:numbers_people,
                I18n.t("bookings.errors.out_of_people",
                       max_people: tour_detail.max_people))
+  end
+
+  def cccd_valid?
+    return if cccd =~ /\A\d{9,12}\z/
+
+    errors.add(:cccd, I18n.t("bookings.errors.cccd_invalid"))
   end
 
   def update_prices
